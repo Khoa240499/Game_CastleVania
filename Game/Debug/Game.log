@@ -1,0 +1,6 @@
+﻿  MainObject.cpp
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(41,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(53,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(68,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(69,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Game.vcxproj -> C:\Users\Tân Khoa\Desktop\Game\Debug\Game.exe
