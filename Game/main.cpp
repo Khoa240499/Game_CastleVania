@@ -97,10 +97,16 @@ int main(int arc, char* argv[])
 		SDL_RenderClear(g_screen);
 
 		g_background.Render(g_screen, NULL);
-
-		game_map.DrawMap(g_screen);
-
+		
+	
+		Map map_data = game_map.getMap();
+		
+		p_simon.SetMapXY(map_data.start_x_, map_data.start_y_);
+		p_simon.DoPlayer(map_data);
 		p_simon.Show(g_screen);
+
+		game_map.setMap(map_data);
+		game_map.DrawMap(g_screen);
 
 		SDL_RenderPresent(g_screen);
 	}

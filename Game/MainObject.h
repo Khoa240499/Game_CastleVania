@@ -1,9 +1,14 @@
-
 #ifndef MAIN_OBJECT_H_
 #define MAIN_OBJECT_H_
 
 #include "CommonFunc.h"
 #include "BaseObject.h"
+#include "Game_Map.h"
+
+#define GRAVITY_SPEED 0.8;
+const int MAX_FALL_SPEED =  10;
+
+const int  PLAYER_SPEED = 8;
 
 class MainObject : public BaseObject
 {
@@ -21,6 +26,12 @@ public:
 	void HandleInputAction(SDL_Event events, SDL_Renderer* screen);
 	void set_clips();
 
+	void DoPlayer(Map& map_data);
+	void CheckToMap(Map& map_data);
+
+	void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }
+	void CenterEmtityOnMap(Map& map_data);
+
 private:
 	float x_val_;
 	float y_val_;
@@ -35,8 +46,10 @@ private:
 	Input input_type_;
 	int frame_;
 	int status_;
+	bool on_ground_;
 
+	int map_x_;
+	int map_y_;
 };
-
 #endif // !MAIN_OBJECT_H_
 

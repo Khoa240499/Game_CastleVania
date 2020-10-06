@@ -26,10 +26,13 @@ const int COLOR_KEY_B = 255;
 
 const int RENDER_DRAW_COLOR = 0Xff;
 
-#define TILE_SIZE 32
+const int TILE_SIZE = 64; 
 
-const int MAX_MAP_X = 30;
-const int MAX_MAP_Y = 15;
+const int MAX_MAP_X = 50;
+const int MAX_MAP_Y = 10;
+
+const int BLANK_TILE = 0;
+
 
 typedef struct Input
 {
