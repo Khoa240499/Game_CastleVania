@@ -61,6 +61,8 @@ void close()
 }
 int main(int arc, char* argv[])
 {
+	int BK_x = 0;
+	int move = 0; 
 	if (InitData() == false)
 		return -1;
 	if (LoadBackground() == false)
@@ -90,13 +92,19 @@ int main(int arc, char* argv[])
 				break;
 			}
 			p_simon.HandleInputAction(g_event, g_screen);
+			move = p_simon.MoveBK(g_event);
 		
 		}
 		
+
 		SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR);
 		SDL_RenderClear(g_screen);
 
+		BK_x += move;
+		g_background.SetRect(BK_x, 0);
+
 		g_background.Render(g_screen, NULL);
+		
 		
 	
 		Map map_data = game_map.getMap();

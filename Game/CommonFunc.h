@@ -33,6 +33,7 @@ const int MAX_MAP_Y = 10;
 
 const int BLANK_TILE = 0;
 
+void ApplySurface(SDL_Surface* src, SDL_Surface* des, int x, int y);
 
 typedef struct Input
 {

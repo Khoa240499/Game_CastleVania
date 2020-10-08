@@ -92,7 +92,6 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 			status_ = WALK_LEFT;
 			input_type_.left_ = 1;
 			input_type_.right_ = 0;
-
 		}
 		break;
 		case SDLK_RIGHT:
@@ -169,6 +168,7 @@ void MainObject::CheckToMap(Map& map_data)
 				x_pos_ = x2 * TILE_SIZE;
 				x_pos_ -= width_frame_ + 1;
 				x_val_ = 0;
+								
 
 			}
 			else if (x_val_ < 0)
@@ -251,4 +251,44 @@ void MainObject::CenterEmtityOnMap(Map& map_data)
 		map_data.start_y_ = map_data.max_y_ - SCREEN_HEIGHT;
 	}
 
+}
+int MainObject::MoveBK(SDL_Event events)
+{
+	int move = 0;
+	if (events.type == SDL_KEYDOWN)
+	{
+		switch (events.key.keysym.sym)
+		{
+		case SDLK_LEFT:
+		{
+			move = 1;
+		}
+		break;
+		case SDLK_RIGHT:
+		{
+			move = -1;
+		}
+		break;
+		}
+	}
+	else if (events.type == SDL_KEYUP)
+	{
+		switch (events.key.keysym.sym)
+		{
+		case SDLK_LEFT:
+		{
+			move = 0;
+
+		}
+		break;
+		case SDLK_RIGHT:
+		{
+			move = 0;
+
+		}
+		break;
+		}
+
+	}
+	return move;
 }
