@@ -8,7 +8,9 @@
 #define GRAVITY_SPEED 0.8;
 const int MAX_FALL_SPEED =  10;
 
-const int  PLAYER_SPEED = 8;
+const int  PLAYER_SPEED = 3;
+
+
 
 class MainObject : public BaseObject
 {
@@ -33,6 +35,7 @@ public:
 	void CenterEmtityOnMap(Map& map_data);
 
 	int MoveBK(SDL_Event events);
+	int get_xpos() { return x_pos_; };
 
 private:
 	float x_val_;
@@ -52,6 +55,10 @@ private:
 
 	int map_x_;
 	int map_y_;
+
+	int type_action_;
+	int check_pos_;
+	
 };
 #endif // !MAIN_OBJECT_H_
 

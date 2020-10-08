@@ -28,12 +28,13 @@ const int RENDER_DRAW_COLOR = 0Xff;
 
 const int TILE_SIZE = 64; 
 
-const int MAX_MAP_X = 50;
+const int MAX_MAP_X = 25;
 const int MAX_MAP_Y = 10;
 
 const int BLANK_TILE = 0;
+const int FRAME_PER_SECOND =  25;
 
-void ApplySurface(SDL_Surface* src, SDL_Surface* des, int x, int y);
+
 
 typedef struct Input
 {
@@ -55,7 +56,6 @@ typedef struct Map
 	int tile[MAX_MAP_Y][MAX_MAP_X];
 	char* file_name_;
 };
-
 
 
 

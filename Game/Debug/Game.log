@@ -1,4 +1,40 @@
-﻿  main.cpp
-C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(45,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(57,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+﻿  BaseObject.cpp
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(46,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(58,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  CommonFunc.cpp
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(46,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(58,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  Game_Map.cpp
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(46,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(58,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  ImpTimer.cpp
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(46,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(58,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  MainObject.cpp
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(46,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(58,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.h(38,26): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(79,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(80,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(140,12): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(167,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(168,44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(170,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(171,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(179,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(189,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(198,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(199,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(201,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(202,45): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(211,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(221,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(238,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(245,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(255,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(46,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(58,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.h(38,26): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
   Game.vcxproj -> C:\Users\Tân Khoa\Desktop\Game\Debug\Game.exe

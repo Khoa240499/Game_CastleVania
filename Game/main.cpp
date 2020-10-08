@@ -2,6 +2,7 @@
 #include "BaseObject.h"
 #include "Game_Map.h"
 #include "MainObject.h"
+#include "ImpTimer.h"
 
 #undef main
 
@@ -61,6 +62,7 @@ void close()
 }
 int main(int arc, char* argv[])
 {
+	ImpTimer fps_timer;
 	int BK_x = 0;
 	int move = 0; 
 	if (InitData() == false)
@@ -77,13 +79,14 @@ int main(int arc, char* argv[])
 	game_map.LoadTiles(g_screen);
 
 	MainObject p_simon;
-	p_simon.LoadImg("img//simon_right.png", g_screen);
+	p_simon.LoadImg("img//simon_right1.png", g_screen);
 	p_simon.set_clips();
 
 
 	bool is_quit = false;
 	while (!is_quit)
 	{
+		fps_timer.start();
 		while (SDL_PollEvent(&g_event) != 0) 
 		{
 			if (g_event.type == SDL_QUIT)
@@ -99,10 +102,12 @@ int main(int arc, char* argv[])
 
 		SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR);
 		SDL_RenderClear(g_screen);
-
-		BK_x += move;
-		g_background.SetRect(BK_x, 0);
-
+				
+		if (p_simon.get_xpos() > 256 && p_simon.get_xpos() < 1280)
+		{
+			BK_x += move;
+			g_background.SetRect(BK_x, 0);
+		}
 		g_background.Render(g_screen, NULL);
 		
 		
@@ -117,6 +122,14 @@ int main(int arc, char* argv[])
 		game_map.DrawMap(g_screen);
 
 		SDL_RenderPresent(g_screen);
+		int real_imp_time = fps_timer.get_ticks();
+		int time_one_frame = 1000 / FRAME_PER_SECOND; //ms
+		if (real_imp_time < time_one_frame)
+		{
+			int delay_time = time_one_frame - real_imp_time;
+			if(delay_time>=0)
+				SDL_Delay(delay_time);
+		}
 	}
 	close();
 	return 0;

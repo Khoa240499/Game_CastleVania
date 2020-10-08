@@ -18,6 +18,10 @@ MainObject::MainObject()
 	bool on_ground_ = false;
 	map_x_ = 0;
 	map_y_ = 0;
+
+	type_action_ = 0;
+	int hold_ = 0;
+	
 }
 MainObject::~MainObject()
 {
@@ -29,8 +33,8 @@ bool MainObject::LoadImg(std::string path, SDL_Renderer* screen)
 	bool ret = BaseObject::LoadImg(path, screen);
 	if (ret == true)
 	{
-		width_frame_ = rect_.w / 8;
-		height_frame_ = rect_.h / 3;
+		width_frame_ = rect_.w / 7;
+		height_frame_ = rect_.h / 1;
 	}
 	return ret;
 }
@@ -39,7 +43,7 @@ void MainObject::set_clips()
 {
 	if (width_frame_ > 0 && height_frame_ > 0)
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 7; i++)
 		{
 			frame_clip_[i].x = i* width_frame_;
 			frame_clip_[i].y = 0* height_frame_;
@@ -54,22 +58,22 @@ void MainObject::Show(SDL_Renderer* des)
 {
 	if (status_ == WALK_LEFT)
 	{
-		LoadImg("img//simon_left.png", des);
+		LoadImg("img//simon_left1.png", des);
 	}
 	else
 	{
-		LoadImg("img//simon_right.png", des);
+		LoadImg("img//simon_right1.png", des);
 	}
-	if (input_type_.left_ == 1
-		|| input_type_.right_ == 1)
+	if (input_type_.left_ == 1 || input_type_.right_ == 1)
 	{
 		frame_++;
+		
 	}
 	else
-		frame_ = 0;
-	if (frame_ >= 4)
+		frame_ = type_action_;
+	if (frame_ >= 7)
 	{
-		frame_ = 0;
+		frame_ = type_action_;
 	}
 	
 	rect_.x = x_pos_ - map_x_;
@@ -79,6 +83,7 @@ void MainObject::Show(SDL_Renderer* des)
 	SDL_Rect renderQuad = { rect_.x, rect_.y, width_frame_, height_frame_ };
 
 	SDL_RenderCopy(des, p_object_, current_clip, &renderQuad);
+
 }
 
 void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
@@ -92,6 +97,8 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 			status_ = WALK_LEFT;
 			input_type_.left_ = 1;
 			input_type_.right_ = 0;
+			type_action_ = 1;
+			
 		}
 		break;
 		case SDLK_RIGHT:
@@ -99,6 +106,8 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 			status_ = WALK_RIGHT;
 			input_type_.right_ = 1;
 			input_type_.left_ = 0;
+			type_action_ = 1;
+			
 		}
 		break;
 		}
@@ -110,13 +119,15 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 		case SDLK_LEFT:
 		{
 			input_type_.left_ = 0;
-
+			type_action_ = 0;
+			
 		}
 		break;
 		case SDLK_RIGHT:
 		{
 			input_type_.right_ = 0;
-
+			type_action_ = 0;
+			
 		}
 		break;
 		}
@@ -261,12 +272,14 @@ int MainObject::MoveBK(SDL_Event events)
 		{
 		case SDLK_LEFT:
 		{
-			move = 1;
+			move = PLAYER_SPEED;
+			
 		}
 		break;
 		case SDLK_RIGHT:
 		{
-			move = -1;
+			move = -PLAYER_SPEED;
+			
 		}
 		break;
 		}
@@ -277,6 +290,7 @@ int MainObject::MoveBK(SDL_Event events)
 		{
 		case SDLK_LEFT:
 		{
+			
 			move = 0;
 
 		}
