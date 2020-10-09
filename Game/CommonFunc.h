@@ -31,8 +31,10 @@ const int TILE_SIZE = 64;
 const int MAX_MAP_X = 25;
 const int MAX_MAP_Y = 10;
 
-const int BLANK_TILE = 0;
+const int BLANK_TILE = 31;
 const int FRAME_PER_SECOND =  25;
+
+
 
 
 

@@ -32,6 +32,7 @@ bool BaseObject::LoadImg(std::string path, SDL_Renderer* screen)
 	return p_object_ != NULL;
 
 }
+
 void BaseObject::Render(SDL_Renderer* des, const SDL_Rect* clip /*= NULL*/)
 {
 	SDL_Rect renderquad = { rect_.x, rect_.y, rect_.w, rect_.h };

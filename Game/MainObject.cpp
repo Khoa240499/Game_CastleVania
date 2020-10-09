@@ -20,7 +20,7 @@ MainObject::MainObject()
 	map_y_ = 0;
 
 	type_action_ = 0;
-	int hold_ = 0;
+
 	
 }
 MainObject::~MainObject()
@@ -38,6 +38,7 @@ bool MainObject::LoadImg(std::string path, SDL_Renderer* screen)
 	}
 	return ret;
 }
+
 
 void MainObject::set_clips()
 {
@@ -174,7 +175,7 @@ void MainObject::CheckToMap(Map& map_data)
 	{
 		if (x_val_ > 0)
 		{
-			if (map_data.tile[y1][x2] != BLANK_TILE || map_data.tile[y2][x2] != BLANK_TILE)
+			if (map_data.tile[y1][x2] >= BLANK_TILE || map_data.tile[y2][x2] >= BLANK_TILE)
 			{
 				x_pos_ = x2 * TILE_SIZE;
 				x_pos_ -= width_frame_ + 1;
@@ -184,7 +185,7 @@ void MainObject::CheckToMap(Map& map_data)
 			}
 			else if (x_val_ < 0)
 			{
-				if (map_data.tile[y1][x1] != BLANK_TILE || map_data.tile[y2][x1] != BLANK_TILE)
+				if (map_data.tile[y1][x1] >= BLANK_TILE || map_data.tile[y2][x1] >= BLANK_TILE)
 				{
 					x_pos_ = (x1 + 1) * TILE_SIZE;
 					x_val_ = 0;
@@ -206,7 +207,7 @@ void MainObject::CheckToMap(Map& map_data)
 	{
 		if (y_val_ > 0)
 		{
-			if (map_data.tile[y2][x1] != BLANK_TILE || map_data.tile[y2][x2] != BLANK_TILE)
+			if (map_data.tile[y2][x1] >= BLANK_TILE || map_data.tile[y2][x2] >= BLANK_TILE)
 			{
 				y_pos_ = y2 * TILE_SIZE;
 				y_pos_ -= (height_frame_ + 1);
@@ -216,7 +217,7 @@ void MainObject::CheckToMap(Map& map_data)
 		}
 		if (y_val_ < 0)
 		{
-			if (map_data.tile[y1][x1] != BLANK_TILE || map_data.tile[y1][x2] != BLANK_TILE)
+			if (map_data.tile[y1][x1] >= BLANK_TILE || map_data.tile[y1][x2] >= BLANK_TILE)
 			{
 				y_pos_ = (y1 + 1) * TILE_SIZE;
 				y_val_ = 0;
@@ -262,47 +263,4 @@ void MainObject::CenterEmtityOnMap(Map& map_data)
 		map_data.start_y_ = map_data.max_y_ - SCREEN_HEIGHT;
 	}
 
-}
-int MainObject::MoveBK(SDL_Event events)
-{
-	int move = 0;
-	if (events.type == SDL_KEYDOWN)
-	{
-		switch (events.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-		{
-			move = PLAYER_SPEED;
-			
-		}
-		break;
-		case SDLK_RIGHT:
-		{
-			move = -PLAYER_SPEED;
-			
-		}
-		break;
-		}
-	}
-	else if (events.type == SDL_KEYUP)
-	{
-		switch (events.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-		{
-			
-			move = 0;
-
-		}
-		break;
-		case SDLK_RIGHT:
-		{
-			move = 0;
-
-		}
-		break;
-		}
-
-	}
-	return move;
 }

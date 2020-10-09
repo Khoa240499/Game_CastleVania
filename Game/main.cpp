@@ -7,7 +7,6 @@
 #undef main
 
 BaseObject g_background;
-
 bool InitData()
 {
 	bool success = true;
@@ -43,9 +42,7 @@ bool InitData()
 bool LoadBackground()
 {
 	bool ret = g_background.LoadImg("img//map1_background.png", g_screen);
-	if (ret == false)
-		return false;
-	return true;
+	return ret;
 }
 void close()
 {
@@ -62,6 +59,7 @@ void close()
 }
 int main(int arc, char* argv[])
 {
+	
 	ImpTimer fps_timer;
 	int BK_x = 0;
 	int move = 0; 
@@ -82,6 +80,8 @@ int main(int arc, char* argv[])
 	p_simon.LoadImg("img//simon_right1.png", g_screen);
 	p_simon.set_clips();
 
+	MainObject game_background;
+	game_background.LoadImg("img//map1_background.png", g_screen);
 
 	bool is_quit = false;
 	while (!is_quit)
@@ -95,7 +95,7 @@ int main(int arc, char* argv[])
 				break;
 			}
 			p_simon.HandleInputAction(g_event, g_screen);
-			move = p_simon.MoveBK(g_event);
+			
 		
 		}
 		
@@ -103,23 +103,24 @@ int main(int arc, char* argv[])
 		SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR);
 		SDL_RenderClear(g_screen);
 				
-		if (p_simon.get_xpos() > 256 && p_simon.get_xpos() < 1280)
-		{
-			BK_x += move;
-			g_background.SetRect(BK_x, 0);
-		}
+		
+		g_background.SetRect(0, 0);
 		g_background.Render(g_screen, NULL);
 		
 		
 	
 		Map map_data = game_map.getMap();
 		
+		
+
 		p_simon.SetMapXY(map_data.start_x_, map_data.start_y_);
 		p_simon.DoPlayer(map_data);
-		p_simon.Show(g_screen);
+		
 
 		game_map.setMap(map_data);
 		game_map.DrawMap(g_screen);
+
+		p_simon.Show(g_screen);
 
 		SDL_RenderPresent(g_screen);
 		int real_imp_time = fps_timer.get_ticks();

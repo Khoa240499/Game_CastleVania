@@ -34,8 +34,8 @@ public:
 	void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }
 	void CenterEmtityOnMap(Map& map_data);
 
-	int MoveBK(SDL_Event events);
-	int get_xpos() { return x_pos_; };
+	
+	
 
 private:
 	float x_val_;
