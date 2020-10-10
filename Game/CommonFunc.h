@@ -26,12 +26,8 @@ const int COLOR_KEY_B = 255;
 
 const int RENDER_DRAW_COLOR = 0Xff;
 
-const int TILE_SIZE = 64; 
+const int TILE_SIZE = 32; 
 
-const int MAX_MAP_X = 25;
-const int MAX_MAP_Y = 10;
-
-const int BLANK_TILE = 31;
 const int FRAME_PER_SECOND =  25;
 
 
@@ -55,7 +51,11 @@ typedef struct Map
 	int max_x_;
 	int max_y_;
 
-	int tile[MAX_MAP_Y][MAX_MAP_X];
+	int MAX_MAP_X;
+	int MAX_MAP_Y;
+	int BLANK_TILE;
+
+	int tile[20][200];
 	char* file_name_;
 };
 

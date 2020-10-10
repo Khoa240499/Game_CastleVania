@@ -19,13 +19,13 @@ void GameMap::LoadMap(char* name)
 	game_map_.max_x_ = 0;
 	game_map_.max_y_ = 0;
 
-	for (int i = 0; i < MAX_MAP_Y; i++)
+	for (int i = 0; i < game_map_.MAX_MAP_Y; i++)
 	{
-		for (int j = 0; j < MAX_MAP_X; j++)
+		for (int j = 0; j < game_map_.MAX_MAP_X; j++)
 		{
-			fscanf_s(fp, "%d", &game_map_.tile[i][j]);
+			fscanf_s(fp, "%d", &game_map_.tile[i][j]);			
 			int val = game_map_.tile[i][j];
-			if (val > 0)
+			if (val >= 0)
 			{
 				if (j > game_map_.max_x_)
 					game_map_.max_x_ = j;
@@ -43,24 +43,51 @@ void GameMap::LoadMap(char* name)
 	game_map_.file_name_ = name;
 	fclose(fp);
 }
-void GameMap::LoadTiles(SDL_Renderer* screen)
+void GameMap::LoadTiles(SDL_Renderer* screen, int scene)
 {
-	char file_img[20];
+	char file_img[30];
 	FILE* fp = NULL;
-	for (int i = 0; i < MAX_TILES; i++)
+	switch (scene)
 	{
-		sprintf_s(file_img, "map/%d.png", i);
-		fopen_s(&fp, file_img, "rb");
-		if (fp == NULL)
+	case 1:
+	{
+		game_map_.MAX_MAP_X = 50;
+		game_map_.MAX_MAP_Y = 20;
+		game_map_.BLANK_TILE = 56;
+		for (int i = 0; i < MAX_TILES; i++)
 		{
-			continue;
+			sprintf_s(file_img, "map/map1/%d.png", i);
+			fopen_s(&fp, file_img, "rb");
+			if (fp == NULL)
+			{
+				continue;
+			}
+			tile_mat[i].LoadImg(file_img, screen);
+			fclose(fp);
+		}		
+	}
+	break;
+	case 2:
+	{
+		game_map_.MAX_MAP_X = 176;
+		game_map_.MAX_MAP_Y = 20;
+		game_map_.BLANK_TILE = 101;
+		for (int i = 0; i < MAX_TILES; i++)
+		{
+			sprintf_s(file_img, "map/map2/%d.png", i);
+			fopen_s(&fp, file_img, "rb");
+			if (fp == NULL)
+			{
+				continue;
+			}
+			tile_mat[i].LoadImg(file_img, screen);
+			fclose(fp);
 		}
+	}
+	break;
 		
 
-		tile_mat[i].LoadImg(file_img, screen);
-		fclose(fp);
 	}
-
 }
 void GameMap::DrawMap(SDL_Renderer* screen)
 {
@@ -87,7 +114,7 @@ void GameMap::DrawMap(SDL_Renderer* screen)
 		for (int j = x1; j < x2; j += TILE_SIZE)
 		{
 			int val = game_map_.tile[map_y][map_x];
-			if (val > 0)
+			if (val >= 0)
 			{
 				tile_mat[val].SetRect(j, i);
 				tile_mat[val].Render(screen);

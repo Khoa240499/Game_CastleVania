@@ -6,9 +6,10 @@
 #include "Game_Map.h"
 
 #define GRAVITY_SPEED 0.8;
-const int MAX_FALL_SPEED =  10;
+const int MAX_FALL_SPEED =  15;
 
-const int  PLAYER_SPEED = 3;
+const int  PLAYER_SPEED = 15;//mac dinh =3
+const int  PLAYER_JUMP_VAL = 10;
 
 
 
@@ -20,22 +21,25 @@ public:
 
 	enum WalkType
 	{
-		WALK_RIGHT = 0,
-		WALK_LEFT = 1,
+		WALK_RIGHT = 1,
+		WALK_LEFT = 2,
+		WALK_NONE = 0,
 	};
 	bool LoadImg(std::string path, SDL_Renderer* screen);
 	void Show(SDL_Renderer* des);
 	void HandleInputAction(SDL_Event events, SDL_Renderer* screen);
 	void set_clips();
 
-	void DoPlayer(Map& map_data);
-	void CheckToMap(Map& map_data);
+	bool DoPlayer(Map& map_data);
+	bool CheckToMap(Map& map_data);
 
 	void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }
 	void CenterEmtityOnMap(Map& map_data);
 
+	void UpdateImgPlayer(SDL_Renderer* des);
+	void SetPos(int x, int y) { x_pos_ = x; y_pos_ = y; }
 	
-	
+		
 
 private:
 	float x_val_;
@@ -58,6 +62,7 @@ private:
 
 	int type_action_;
 	int check_pos_;
+	int come_back_time;
 	
 };
 #endif // !MAIN_OBJECT_H_

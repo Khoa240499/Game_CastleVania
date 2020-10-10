@@ -59,22 +59,24 @@ void close()
 }
 int main(int arc, char* argv[])
 {
-	
 	ImpTimer fps_timer;
-	int BK_x = 0;
-	int move = 0; 
+
+	bool check_point_ = false;
+
 	if (InitData() == false)
 		return -1;
 	if (LoadBackground() == false)
 		return -1;
 
-	GameMap game_map;
-	
-	char map_direction[] = "map//map01.dat";
-	char* map = map_direction;
 
+	bool is_quit = false;
+	GameMap game_map;
+
+	char map_direction[] = "map//map1//map01.dat";
+	char* map = map_direction;
+	game_map.LoadTiles(g_screen, 1);//tile trc map sau
 	game_map.LoadMap(map);
-	game_map.LoadTiles(g_screen);
+	
 
 	MainObject p_simon;
 	p_simon.LoadImg("img//simon_right1.png", g_screen);
@@ -83,11 +85,12 @@ int main(int arc, char* argv[])
 	MainObject game_background;
 	game_background.LoadImg("img//map1_background.png", g_screen);
 
-	bool is_quit = false;
+
+
 	while (!is_quit)
 	{
 		fps_timer.start();
-		while (SDL_PollEvent(&g_event) != 0) 
+		while (SDL_PollEvent(&g_event) != 0)
 		{
 			if (g_event.type == SDL_QUIT)
 			{
@@ -95,27 +98,38 @@ int main(int arc, char* argv[])
 				break;
 			}
 			p_simon.HandleInputAction(g_event, g_screen);
-			
-		
+
+
 		}
-		
+
 
 		SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR);
 		SDL_RenderClear(g_screen);
-				
-		
+
+
+
 		g_background.SetRect(0, 0);
 		g_background.Render(g_screen, NULL);
-		
-		
-	
+
+
+
 		Map map_data = game_map.getMap();
-		
-		
+
+
 
 		p_simon.SetMapXY(map_data.start_x_, map_data.start_y_);
-		p_simon.DoPlayer(map_data);
-		
+		check_point_=p_simon.DoPlayer(map_data);
+		if (check_point_ == true)
+		{
+			char map_direction2[] = "map//map2//map02.dat";
+			char* map2 = map_direction2;
+			game_map.LoadTiles(g_screen, 2);//tile trc map sau
+			game_map.LoadMap(map2);
+			map_data = game_map.getMap();
+
+
+			p_simon.SetPos(0, 0);
+		}
 
 		game_map.setMap(map_data);
 		game_map.DrawMap(g_screen);
@@ -128,10 +142,12 @@ int main(int arc, char* argv[])
 		if (real_imp_time < time_one_frame)
 		{
 			int delay_time = time_one_frame - real_imp_time;
-			if(delay_time>=0)
+			if (delay_time >= 0)
 				SDL_Delay(delay_time);
 		}
 	}
+
+
 	close();
 	return 0;
 }
