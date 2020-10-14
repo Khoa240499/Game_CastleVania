@@ -51,9 +51,11 @@ void GameMap::LoadTiles(SDL_Renderer* screen, int scene)
 	{
 	case 1:
 	{
-		game_map_.MAX_MAP_X = 50;
+		game_map_.MAX_MAP_X = 55;
 		game_map_.MAX_MAP_Y = 20;
 		game_map_.BLANK_TILE = 56;
+		game_map_.CHECK_POINT = 58;
+	
 		for (int i = 0; i < MAX_TILES; i++)
 		{
 			sprintf_s(file_img, "map/map1/%d.png", i);
@@ -72,6 +74,7 @@ void GameMap::LoadTiles(SDL_Renderer* screen, int scene)
 		game_map_.MAX_MAP_X = 176;
 		game_map_.MAX_MAP_Y = 20;
 		game_map_.BLANK_TILE = 101;
+		game_map_.CHECK_POINT = 103;
 		for (int i = 0; i < MAX_TILES; i++)
 		{
 			sprintf_s(file_img, "map/map2/%d.png", i);
@@ -85,7 +88,27 @@ void GameMap::LoadTiles(SDL_Renderer* screen, int scene)
 		}
 	}
 	break;
-		
+	case 3:
+	{
+		game_map_.MAX_MAP_X = 35;
+		game_map_.MAX_MAP_Y = 15;
+		game_map_.BLANK_TILE = 27;
+		game_map_.CHECK_POINT = 29;
+		for (int i = 0; i < MAX_TILES; i++)
+		{
+			sprintf_s(file_img, "map/map3/%d.png", i);
+			fopen_s(&fp, file_img, "rb");
+			if (fp == NULL)
+			{
+				continue;
+			}
+			tile_mat[i].LoadImg(file_img, screen);
+			fclose(fp);
+		}
+	}
+	break;
+
+
 
 	}
 }

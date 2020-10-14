@@ -5,7 +5,7 @@
 #include "BaseObject.h"
 
 const int MAX_TILES = 110;
-const int CHECK_POINT = 200;
+
 
 class TileMat : public BaseObject
 {
@@ -33,6 +33,7 @@ private:
 
 	Map game_map_;
 	TileMat tile_mat[MAX_TILES];
+	
 	
 };
 

@@ -57,11 +57,59 @@ void close()
 	SDL_Quit();
 
 }
+void Select_Scene(SDL_Renderer* g_screen, MainObject& p_simon, Map& map_data, GameMap& game_map, int scene)
+{
+	switch (scene)
+	{
+	case 1:
+	{
+		char map_direction[] = "map//map1//map01.dat";
+		char* map = map_direction;
+		game_map.LoadTiles(g_screen, 1);//tile trc map sau
+		game_map.LoadMap(map);
+	}
+	break;
+	case 2:
+	{
+		char map_direction2[] = "map//map2//map02.dat";
+		char* map2 = map_direction2;
+		game_map.LoadTiles(g_screen, 2);//tile trc map sau
+		game_map.LoadMap(map2);
+		map_data = game_map.getMap();
+
+		p_simon.SetPos(2900, 0);
+	}
+	break;
+	case 3:
+	{
+		char map_direction3[] = "map//map3//map03.dat";
+		char* map3 = map_direction3;
+		game_map.LoadTiles(g_screen, 3);//tile trc map sau
+		game_map.LoadMap(map3);
+		map_data = game_map.getMap();
+
+		p_simon.SetPos(0, 0);
+	}
+	break;
+	case 4:
+	{
+		char map_direction2[] = "map//map2//map02.dat";
+		char* map2 = map_direction2;
+		game_map.LoadTiles(g_screen, 2);//tile trc map sau
+		game_map.LoadMap(map2);
+		map_data = game_map.getMap();
+
+		p_simon.SetPos(3104, 352); /////load simon o canh vi tri cau thang di xuong scene 2
+	}
+	break;
+	}
+}
+
 int main(int arc, char* argv[])
 {
 	ImpTimer fps_timer;
 
-	bool check_point_ = false;
+	int check_point_ = -1;
 
 	if (InitData() == false)
 		return -1;
@@ -72,10 +120,7 @@ int main(int arc, char* argv[])
 	bool is_quit = false;
 	GameMap game_map;
 
-	char map_direction[] = "map//map1//map01.dat";
-	char* map = map_direction;
-	game_map.LoadTiles(g_screen, 1);//tile trc map sau
-	game_map.LoadMap(map);
+	Map map_data;
 	
 
 	MainObject p_simon;
@@ -84,8 +129,8 @@ int main(int arc, char* argv[])
 
 	MainObject game_background;
 	game_background.LoadImg("img//map1_background.png", g_screen);
-
-
+		
+	Select_Scene(g_screen, p_simon, map_data, game_map, 1);// load scene 1
 
 	while (!is_quit)
 	{
@@ -106,30 +151,17 @@ int main(int arc, char* argv[])
 		SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR);
 		SDL_RenderClear(g_screen);
 
-
-
 		g_background.SetRect(0, 0);
 		g_background.Render(g_screen, NULL);
 
-
-
-		Map map_data = game_map.getMap();
+		map_data = game_map.getMap();
 
 
 
 		p_simon.SetMapXY(map_data.start_x_, map_data.start_y_);
-		check_point_=p_simon.DoPlayer(map_data);
-		if (check_point_ == true)
-		{
-			char map_direction2[] = "map//map2//map02.dat";
-			char* map2 = map_direction2;
-			game_map.LoadTiles(g_screen, 2);//tile trc map sau
-			game_map.LoadMap(map2);
-			map_data = game_map.getMap();
+		check_point_= p_simon.DoPlayer(map_data);
 
-
-			p_simon.SetPos(0, 0);
-		}
+		Select_Scene(g_screen, p_simon, map_data, game_map, check_point_);//////////
 
 		game_map.setMap(map_data);
 		game_map.DrawMap(g_screen);

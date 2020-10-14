@@ -51,11 +51,12 @@ typedef struct Map
 	int max_x_;
 	int max_y_;
 
-	int MAX_MAP_X;
-	int MAX_MAP_Y;
-	int BLANK_TILE;
+	int MAX_MAP_X;///////////
+	int MAX_MAP_Y;//////////
+	int BLANK_TILE;////////
+	int CHECK_POINT = -1;
 
-	int tile[20][200];
+	int tile[20][200];///////////
 	char* file_name_;
 };
 

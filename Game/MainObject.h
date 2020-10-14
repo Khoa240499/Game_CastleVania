@@ -9,7 +9,7 @@
 const int MAX_FALL_SPEED =  15;
 
 const int  PLAYER_SPEED = 15;//mac dinh =3
-const int  PLAYER_JUMP_VAL = 10;
+const int  PLAYER_JUMP_VAL = 20;  //10
 
 
 
@@ -30,8 +30,8 @@ public:
 	void HandleInputAction(SDL_Event events, SDL_Renderer* screen);
 	void set_clips();
 
-	bool DoPlayer(Map& map_data);
-	bool CheckToMap(Map& map_data);
+	int DoPlayer(Map& map_data);
+	int CheckToMap(Map& map_data);
 
 	void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }
 	void CenterEmtityOnMap(Map& map_data);

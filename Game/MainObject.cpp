@@ -144,9 +144,9 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 	}
 	
 }
-bool MainObject::DoPlayer(Map& map_data)
+int MainObject::DoPlayer(Map& map_data)
 {
-	bool check_point_ = false;
+	int check_point_ = -1;
 	if (come_back_time == 0)
 	{
 		x_val_ = 0;
@@ -194,9 +194,9 @@ bool MainObject::DoPlayer(Map& map_data)
 
 
 }
-bool MainObject::CheckToMap(Map& map_data)
+int MainObject::CheckToMap(Map& map_data)
 {
-	bool check_point_ = false;
+	int check_point_ = -1;
 	int x1 = 0;
 	int x2 = 0;
 
@@ -216,9 +216,9 @@ bool MainObject::CheckToMap(Map& map_data)
 	{
 		if (x_val_ > 0)
 		{
-			if (map_data.tile[y1][x2] == CHECK_POINT || map_data.tile[y2][x2] == CHECK_POINT)
+			if (map_data.tile[y1][x2] == map_data.CHECK_POINT || map_data.tile[y2][x2] == map_data.CHECK_POINT)
 			{
-				check_point_ = true;
+				check_point_ = 2;
 			}
 			if (map_data.tile[y1][x2] > map_data.BLANK_TILE || map_data.tile[y2][x2] > map_data.BLANK_TILE)
 			{
@@ -229,18 +229,20 @@ bool MainObject::CheckToMap(Map& map_data)
 								
 
 			}
-			else if (x_val_ < 0)
+			
+		}
+
+		if (x_val_ < 0)
+		{
+			if (map_data.tile[y1][x1] == map_data.CHECK_POINT || map_data.tile[y2][x1] == map_data.CHECK_POINT)
 			{
-				if (map_data.tile[y1][x1] == CHECK_POINT || map_data.tile[y2][x1] == CHECK_POINT)
-				{
-					check_point_ = true;
-				}
-				if (map_data.tile[y1][x1] > map_data.BLANK_TILE || map_data.tile[y2][x1] > map_data.BLANK_TILE)
-				{
-					
-					x_pos_ = (x1 + 1) * TILE_SIZE;
-					x_val_ = 0;
-				}
+				check_point_ = 2;
+			}
+			if (map_data.tile[y1][x1] > map_data.BLANK_TILE || map_data.tile[y2][x1] > map_data.BLANK_TILE)
+			{
+
+				x_pos_ = (x1 + 1) * TILE_SIZE;
+				x_val_ = 0;
 			}
 		}
 	}
@@ -259,6 +261,10 @@ bool MainObject::CheckToMap(Map& map_data)
 	{
 		if (y_val_ > 0)
 		{
+			if (map_data.tile[y2][x1] == map_data.CHECK_POINT || map_data.tile[y2][x2] == map_data.CHECK_POINT)
+			{
+				check_point_ = 3;
+			}
 			
 			if (map_data.tile[y2][x1] > map_data.BLANK_TILE || map_data.tile[y2][x2] > map_data.BLANK_TILE)
 			{
@@ -275,7 +281,10 @@ bool MainObject::CheckToMap(Map& map_data)
 		}
 		if (y_val_ < 0)
 		{
-			
+			if (map_data.tile[y1][x1] == map_data.CHECK_POINT || map_data.tile[y1][x2] == map_data.CHECK_POINT)
+			{
+				check_point_ = 4;
+			}
 			if (map_data.tile[y1][x1] > map_data.BLANK_TILE || map_data.tile[y1][x2] > map_data.BLANK_TILE)
 			{
 				

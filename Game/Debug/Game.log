@@ -1,33 +1,6 @@
-﻿  Game_Map.cpp
+﻿  main.cpp
 C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(44,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(60,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-  MainObject.cpp
-C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(44,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(60,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(61,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
 C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.h(40,39): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.h(40,51): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(74,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(75,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(153,13): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(209,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(210,44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(212,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(213,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(226,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(241,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(251,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(252,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(254,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(255,45): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(266,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(282,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(300,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(312,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.cpp(322,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  main.cpp
-C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(44,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-C:\Users\Tân Khoa\Desktop\Game\Game\CommonFunc.h(60,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.h(40,39): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tân Khoa\Desktop\Game\Game\MainObject.h(40,51): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
   Game.vcxproj -> C:\Users\Tân Khoa\Desktop\Game\Debug\Game.exe
